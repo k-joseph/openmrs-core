@@ -17,6 +17,8 @@
 <openmrs:htmlInclude file="/dwr/interface/DWREncounterService.js"/>
 <openmrs:htmlInclude file="/dwr/interface/DWRProviderService.js" />
 
+
+<h1> encounterForm.jsp </h1>
 <script type="text/javascript">
 	var providersCount = ${fn:length(encounter.providersByRoles)};
 	var numberOfClonedElements = 0;

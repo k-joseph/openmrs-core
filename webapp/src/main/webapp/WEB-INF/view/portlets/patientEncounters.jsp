@@ -10,6 +10,8 @@
 <openmrs:globalProperty key="dashboard.encounters.showViewLink" var="showViewLink" defaultValue="true"/>
 <openmrs:globalProperty key="dashboard.encounters.showEditLink" var="showEditLink" defaultValue="true"/>
 
+
+<h1>  patientEncounters.jsp </h1>
 <div id="displayEncounterPopup">
 	<div id="displayEncounterPopupLoading"><openmrs:message code="general.loading"/></div>
 	<iframe id="displayEncounterPopupIframe" width="100%" height="100%" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto"></iframe>
