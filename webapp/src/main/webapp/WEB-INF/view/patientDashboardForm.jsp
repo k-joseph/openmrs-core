@@ -14,6 +14,8 @@
 </c:if>
 <%@ include file="/WEB-INF/template/header.jsp" %>
 
+<h1 align="center"><font color="sienna"  face="berlin sans FB" size="3px" > //patientDashboardForm.jsp </font></h1>
+
 <%-- Files from encounter and graph portlets being included near header to improve page loading speed
      If those tabs/portlets are no longer using them, they should be removed from here --%>
 <openmrs:htmlInclude file="/scripts/easyAjax.js" />

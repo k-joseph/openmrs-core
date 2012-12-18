@@ -11,7 +11,8 @@
 <openmrs:globalProperty key="dashboard.encounters.showEditLink" var="showEditLink" defaultValue="true"/>
 
 
-<h1>  patientEncounters.jsp </h1>
+<h1 align="center"><font color="sienna"  face="berlin sans FB" size="3px" > //patientEncounters.jsp </font></h1>
+
 <div id="displayEncounterPopup">
 	<div id="displayEncounterPopupLoading"><openmrs:message code="general.loading"/></div>
 	<iframe id="displayEncounterPopupIframe" width="100%" height="100%" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto"></iframe>

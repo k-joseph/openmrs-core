@@ -18,7 +18,8 @@
 <openmrs:htmlInclude file="/dwr/interface/DWRProviderService.js" />
 
 
-<h1> encounterForm.jsp </h1>
+<h1 align="center"><font color="sienna"  face="berlin sans FB" size="3px" > //encounterForm.jsp </font></h1>
+
 <script type="text/javascript">
 	var providersCount = ${fn:length(encounter.providersByRoles)};
 	var numberOfClonedElements = 0;
@@ -434,51 +435,51 @@
 	</form>
 	
 <c:if test="${encounter.encounterId != null}">
-	<br/>
+	<br>
 	<openmrs:extensionPoint pointId="org.openmrs.admin.encounters.encounterFormBeforeObs" type="html" parameters="encounterId=${encounter.encounterId}">
 		<openmrs:hasPrivilege privilege="${extension.requiredPrivilege}">
 			<div class="boxHeader" style="font-weight: bold;"><openmrs:message code="${extension.title}" /></div>
 			<div class="box" style="padding: 0px 0px 5px;"><openmrs:message code="${extension.content}" />
   				<c:if test="${extension.portletUrl != null}">
-   					<openmrs:portlet url="${extension.portletUrl}" moduleId="${extension.moduleId}" id="${extension.portletUrl}" encounterId="${encounter.encounterId}" parameters="allowEdits=true"/>
+   					<openmrs:portlet url="${extension.portletUrl}" moduleId="${extension.moduleId}" id="${extension.portletUrl}" encounterId="${encounter.encounterId}" parameters="allowEdits=true" />
  				</c:if>
 			</div>
-			<br />
+			<br>
 		</openmrs:hasPrivilege>
 	</openmrs:extensionPoint>
 	
-	<br/>
+	<br>
 	<div class="boxHeader">
 		<span style="float: right">
-			<a href="#" id="showDescription" onClick="return toggleVisibility(document, 'div', 'description')"><openmrs:message code="general.toggle.description"/></a> |
-			<a href="#" id="showVoided" onClick="return toggleRowVisibilityForClass('obs', 'voided', true);"><openmrs:message code="general.toggle.voided"/></a>
+			<a href="#" id="showDescription" onClick="return toggleVisibility(document, 'div', 'description')"><openmrs:message code="general.toggle.description" /></a> |
+			<a href="#" id="showVoided" onClick="return toggleRowVisibilityForClass('obs', 'voided', true);"><openmrs:message code="general.toggle.voided" /></a>
 		</span>
-		<b><openmrs:message code="Encounter.observations"/></b>
+		<b><openmrs:message code="Encounter.observations" /></b>
 	</div>
 	<div class="box">
 	<table cellspacing="0" cellpadding="2" width="98%" id="obs">
 		<tr id="obsListingHeaderRow">
 			<th class="fieldNumber"></th>
-			<th class="obsConceptName"><openmrs:message code="Obs.concept"/></th>
-			<th class="obsValue"><openmrs:message code="Obs.value"/></th>
+			<th class="obsConceptName"><openmrs:message code="Obs.concept" /></th>
+			<th class="obsValue"><openmrs:message code="Obs.value" /></th>
 			<th class="obsAlerts"></th>
-			<th class="obsCreator"><openmrs:message code="Obs.creator.or.changedBy"/></th>
+			<th class="obsCreator"><openmrs:message code="Obs.creator.or.changedBy" /></th>
 		</tr>
 		<c:forEach items="${obsMap}" var="obsEntry" varStatus="status">
-			<c:set var="obsList" value="${obsEntry.value}" scope="request"/>
-		    <c:set var="field" value="${obsEntry.key}" scope="request"/>
-		    <c:set var="level" value="0" scope="request"/>
+			<c:set var="obsList" value="${obsEntry.value}" scope="request" />
+		    <c:set var="field" value="${obsEntry.key}" scope="request" />
+		    <c:set var="level" value="0" scope="request" />
 			<c:import url="obsDisplay.jsp" />
 		</c:forEach>
 	</table>
 	</div>
 	
-	<br />
+	<br>
 	<div id="encounterFormAddObsMenu">
 		<openmrs:hasPrivilege privilege="Add Observations">
 			<div>
 				<a href="${pageContext.request.contextPath}/admin/observations/obs.form?encounterId=${encounter.encounterId}">
-					<openmrs:message code="Obs.add"/>
+					<openmrs:message code="Obs.add" />
 				</a>
 			</div>
 		</openmrs:hasPrivilege>
@@ -486,13 +487,13 @@
 			<c:forEach items="${extension.links}" var="link">
 				<openmrs:hasPrivilege privilege="${link.requiredPrivilege}">
 					<div>
-						<a href="<c:url value="${link.url}" />"><openmrs:message code="${link.label}"/></a>
+						<a href='<c:url value="${link.url}" />'><openmrs:message code="${link.label}" /></a>
 					</div>
 				</openmrs:hasPrivilege>
 			</c:forEach>
 		</openmrs:extensionPoint>
 	</div>
-	<br />
+	<br>
 	
 </c:if>
 
