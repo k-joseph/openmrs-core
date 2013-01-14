@@ -297,6 +297,18 @@ public class ModuleUtilTest extends BaseContextSensitiveTest {
 	}
 	
 	/**
+	 * @see {@link ModuleUtil#matchRequiredVersions(String,String)}
+	 */
+	@Test
+	@Ignore
+	@Verifies(value = "should handle the special case of '-SNAPSHOT'", method = "matchRequiredVersions(String,String)")
+	public void matchRequiredVersions_handleTheSpecialCaseOf_SNAPSHOT() throws Exception {
+		String openmrsVersion = "1.9.0-SNAPSHOT";
+		String requiredOpenmrsVersion = "1.9.0-SNAPSHOT";
+		Assert.assertTrue(ModuleUtil.matchRequiredVersions(openmrsVersion, requiredOpenmrsVersion));
+	}
+	
+	/**
 	 * @see {@link ModuleUtil#getPathForResource(Module,String)}
 	 */
 	@Test
