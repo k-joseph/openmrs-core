@@ -1077,6 +1077,21 @@ public final class OpenmrsConstants {
 	public static final String GP_CASE_SENSITIVE_NAMES_IN_CONCEPT_NAME_TABLE = "concept.caseSensitiveNamesInConceptNameTable";
 	
 	/**
+	 * Global property for Date display format
+	 */
+	public static final String GLOBAL_POPERTY_DATE_DISPLAY_FORMAT = "displayFormat.date";
+	
+	/**
+	 * Global property for Date and Time display format
+	 */
+	public static final String GLOBAL_PROPERTY_DATEANDTIME_DISPLAY_FORMAT = "displayFormat.dateTime";
+	
+	/**
+	 * Global property for Time display format
+	 */
+	public static final String GLOBAL_PROPERTY_TIME_DISPLAY_FORMAT = "displayFormat.time";
+	
+	/**
 	 * At OpenMRS startup these global properties/default values/descriptions are inserted into the
 	 * database if they do not exist yet.
 	 * 
@@ -1098,31 +1113,26 @@ public final class OpenmrsConstants {
 		
 		props.add(new GlobalProperty("dashboard.overview.showConcepts", "",
 		        "Comma delimited list of concepts ids to show on the patient dashboard overview tab"));
-		props
-		        .add(new GlobalProperty("dashboard.encounters.showEmptyFields", "true",
-		                "true/false whether or not to show empty fields on the 'View Encounter' window",
-		                BooleanDatatype.class, null));
-		props
-		        .add(new GlobalProperty(
-		                "dashboard.encounters.usePages",
-		                "smart",
-		                "true/false/smart on how to show the pages on the 'View Encounter' window.  'smart' means that if > 50% of the fields have page numbers defined, show data in pages"));
+		props.add(new GlobalProperty("dashboard.encounters.showEmptyFields", "true",
+		        "true/false whether or not to show empty fields on the 'View Encounter' window", BooleanDatatype.class, null));
+		props.add(new GlobalProperty(
+		        "dashboard.encounters.usePages",
+		        "smart",
+		        "true/false/smart on how to show the pages on the 'View Encounter' window.  'smart' means that if > 50% of the fields have page numbers defined, show data in pages"));
 		props.add(new GlobalProperty("dashboard.encounters.showViewLink", "true",
 		        "true/false whether or not to show the 'View Encounter' link on the patient dashboard",
 		        BooleanDatatype.class, null));
 		props.add(new GlobalProperty("dashboard.encounters.showEditLink", "true",
 		        "true/false whether or not to show the 'Edit Encounter' link on the patient dashboard",
 		        BooleanDatatype.class, null));
-		props
-		        .add(new GlobalProperty(
-		                "dashboard.header.programs_to_show",
-		                "",
-		                "List of programs to show Enrollment details of in the patient header. (Should be an ordered comma-separated list of program_ids or names.)"));
-		props
-		        .add(new GlobalProperty(
-		                "dashboard.header.workflows_to_show",
-		                "",
-		                "List of programs to show Enrollment details of in the patient header. List of workflows to show current status of in the patient header. These will only be displayed if they belong to a program listed above. (Should be a comma-separated list of program_workflow_ids.)"));
+		props.add(new GlobalProperty(
+		        "dashboard.header.programs_to_show",
+		        "",
+		        "List of programs to show Enrollment details of in the patient header. (Should be an ordered comma-separated list of program_ids or names.)"));
+		props.add(new GlobalProperty(
+		        "dashboard.header.workflows_to_show",
+		        "",
+		        "List of programs to show Enrollment details of in the patient header. List of workflows to show current status of in the patient header. These will only be displayed if they belong to a program listed above. (Should be a comma-separated list of program_workflow_ids.)"));
 		props.add(new GlobalProperty("dashboard.relationships.show_types", "",
 		        "Types of relationships separated by commas.  Doctor/Patient,Parent/Child"));
 		props.add(new GlobalProperty("FormEntry.enableDashboardTab", "true",
@@ -1130,17 +1140,15 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty("FormEntry.enableOnEncounterTab", "false",
 		        "true/false whether or not to show a Enter Form button on the encounters tab of the patient dashboard",
 		        BooleanDatatype.class, null));
-		props
-		        .add(new GlobalProperty(
-		                "dashboard.regimen.displayDrugSetIds",
-		                "ANTIRETROVIRAL DRUGS,TUBERCULOSIS TREATMENT DRUGS",
-		                "Drug sets that appear on the Patient Dashboard Regimen tab. Comma separated list of name of concepts that are defined as drug sets."));
+		props.add(new GlobalProperty(
+		        "dashboard.regimen.displayDrugSetIds",
+		        "ANTIRETROVIRAL DRUGS,TUBERCULOSIS TREATMENT DRUGS",
+		        "Drug sets that appear on the Patient Dashboard Regimen tab. Comma separated list of name of concepts that are defined as drug sets."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_DRUG_FREQUENCIES,
-		                "7 days/week,6 days/week,5 days/week,4 days/week,3 days/week,2 days/week,1 days/week",
-		                "Frequency of a drug order that appear on the Patient Dashboard. Comma separated list of name of concepts that are defined as drug frequencies."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_DRUG_FREQUENCIES,
+		        "7 days/week,6 days/week,5 days/week,4 days/week,3 days/week,2 days/week,1 days/week",
+		        "Frequency of a drug order that appear on the Patient Dashboard. Comma separated list of name of concepts that are defined as drug frequencies."));
 		
 		props.add(new GlobalProperty(GP_GRAPH_COLOR_ABSOLUTE, "rgb(20,20,20)",
 		        "Color of the 'invalid' section of numeric graphs on the patient dashboard."));
@@ -1205,9 +1213,7 @@ public final class OpenmrsConstants {
 		
 		props.add(new GlobalProperty("concept.weight", "5089", "Concept id of the concept defining the WEIGHT concept"));
 		props.add(new GlobalProperty("concept.height", "5090", "Concept id of the concept defining the HEIGHT concept"));
-		props
-		        .add(new GlobalProperty("concept.cd4_count", "5497",
-		                "Concept id of the concept defining the CD4 count concept"));
+		props.add(new GlobalProperty("concept.cd4_count", "5497", "Concept id of the concept defining the CD4 count concept"));
 		props.add(new GlobalProperty("concept.causeOfDeath", "5002",
 		        "Concept id of the concept defining the CAUSE OF DEATH concept"));
 		props.add(new GlobalProperty("concept.none", "1107", "Concept id of the concept defining the NONE concept"));
@@ -1246,88 +1252,81 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty("scheduler.password", SchedulerConstants.SCHEDULER_DEFAULT_PASSWORD,
 		        "Password for the OpenMRS user that will perform the scheduler activities"));
 		
+		props.add(new GlobalProperty(GLOBAL_POPERTY_DATE_DISPLAY_FORMAT, null, "Format for displaying Date"));
+		
+		props.add(new GlobalProperty(GLOBAL_PROPERTY_DATEANDTIME_DISPLAY_FORMAT, null, "Format for displaying Date and Time"));
+		
+		props.add(new GlobalProperty(GLOBAL_PROPERTY_TIME_DISPLAY_FORMAT, null, "Format for displaying Time"));
+		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_CONCEPTS_LOCKED, "false", "if true, do not allow editing concepts",
 		        BooleanDatatype.class, null));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "",
 		        "A comma delimited list of PersonAttributeType names that should be displayed for patients in _lists_"));
-		props
-		        .add(new GlobalProperty(GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES, "",
-		                "A comma delimited list of PersonAttributeType names that should be displayed for patients when _viewing individually_"));
+		props.add(new GlobalProperty(GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES, "",
+		        "A comma delimited list of PersonAttributeType names that should be displayed for patients when _viewing individually_"));
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES, "",
 		        "A comma delimited list of PersonAttributeType names that will be shown on the patient dashboard"));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_USER_LISTING_ATTRIBUTES, "",
 		        "A comma delimited list of PersonAttributeType names that should be displayed for users in _lists_"));
-		props
-		        .add(new GlobalProperty(GLOBAL_PROPERTY_USER_VIEWING_ATTRIBUTES, "",
-		                "A comma delimited list of PersonAttributeType names that should be displayed for users when _viewing individually_"));
-		props
-		        .add(new GlobalProperty(GLOBAL_PROPERTY_USER_HEADER_ATTRIBUTES, "",
-		                "A comma delimited list of PersonAttributeType names that will be shown on the user dashboard. (not used in v1.5)"));
+		props.add(new GlobalProperty(GLOBAL_PROPERTY_USER_VIEWING_ATTRIBUTES, "",
+		        "A comma delimited list of PersonAttributeType names that should be displayed for users when _viewing individually_"));
+		props.add(new GlobalProperty(GLOBAL_PROPERTY_USER_HEADER_ATTRIBUTES, "",
+		        "A comma delimited list of PersonAttributeType names that will be shown on the user dashboard. (not used in v1.5)"));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX,
-		                "",
-		                "WARNING: Using this search property can cause a drop in mysql performance with large patient sets.  A MySQL regular expression for the patient identifier search strings.  The @SEARCH@ string is replaced at runtime with the user's search string.  An empty regex will cause a simply 'like' sql search to be used. Example: ^0*@SEARCH@([A-Z]+-[0-9])?$"));
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_IDENTIFIER_PREFIX,
-		                "",
-		                "This property is only used if "
-		                        + GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX
-		                        + " is empty.  The string here is prepended to the sql indentifier search string.  The sql becomes \"... where identifier like '<PREFIX><QUERY STRING><SUFFIX>';\".  Typically this value is either a percent sign (%) or empty."));
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_IDENTIFIER_SUFFIX,
-		                "",
-		                "This property is only used if "
-		                        + GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX
-		                        + " is empty.  The string here is prepended to the sql indentifier search string.  The sql becomes \"... where identifier like '<PREFIX><QUERY STRING><SUFFIX>';\".  Typically this value is either a percent sign (%) or empty."));
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_IDENTIFIER_SEARCH_PATTERN,
-		                "",
-		                "If this is empty, the regex or suffix/prefix search is used.  Comma separated list of identifiers to check.  Allows for faster searching of multiple options rather than the slow regex. e.g. @SEARCH@,0@SEARCH@,@SEARCH-1@-@CHECKDIGIT@,0@SEARCH-1@-@CHECKDIGIT@ would turn a request for \"4127\" into a search for \"in ('4127','04127','412-7','0412-7')\""));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX,
+		        "",
+		        "WARNING: Using this search property can cause a drop in mysql performance with large patient sets.  A MySQL regular expression for the patient identifier search strings.  The @SEARCH@ string is replaced at runtime with the user's search string.  An empty regex will cause a simply 'like' sql search to be used. Example: ^0*@SEARCH@([A-Z]+-[0-9])?$"));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_IDENTIFIER_PREFIX,
+		        "",
+		        "This property is only used if "
+		                + GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX
+		                + " is empty.  The string here is prepended to the sql indentifier search string.  The sql becomes \"... where identifier like '<PREFIX><QUERY STRING><SUFFIX>';\".  Typically this value is either a percent sign (%) or empty."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_IDENTIFIER_SUFFIX,
+		        "",
+		        "This property is only used if "
+		                + GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX
+		                + " is empty.  The string here is prepended to the sql indentifier search string.  The sql becomes \"... where identifier like '<PREFIX><QUERY STRING><SUFFIX>';\".  Typically this value is either a percent sign (%) or empty."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_IDENTIFIER_SEARCH_PATTERN,
+		        "",
+		        "If this is empty, the regex or suffix/prefix search is used.  Comma separated list of identifiers to check.  Allows for faster searching of multiple options rather than the slow regex. e.g. @SEARCH@,0@SEARCH@,@SEARCH-1@-@CHECKDIGIT@,0@SEARCH-1@-@CHECKDIGIT@ would turn a request for \"4127\" into a search for \"in ('4127','04127','412-7','0412-7')\""));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_NAME_REGEX,
-		                "^[a-zA-Z \\-]+$",
-		                "Names of the patients must pass this regex. Eg : ^[a-zA-Z \\-]+$ contains only english alphabet letters, spaces, and hyphens. A value of .* or the empty string means no validation is done."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_NAME_REGEX,
+		        "^[a-zA-Z \\-]+$",
+		        "Names of the patients must pass this regex. Eg : ^[a-zA-Z \\-]+$ contains only english alphabet letters, spaces, and hyphens. A value of .* or the empty string means no validation is done."));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS, String
 		        .valueOf(GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS_DEFAULT_VALUE),
 		        "The maximum number of results returned by patient searches"));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_GZIP_ENABLED,
-		                "false",
-		                "Set to 'true' to turn on OpenMRS's gzip filter, and have the webapp compress data before sending it to any client that supports it. Generally use this if you are running Tomcat standalone. If you are running Tomcat behind Apache, then you'd want to use Apache to do gzip compression.",
-		                BooleanDatatype.class, null));
-		props
-		        .add(new GlobalProperty(GLOBAL_PROPERTY_REPORT_XML_MACROS, "",
-		                "Macros that will be applied to Report Schema XMLs when they are interpreted. This should be java.util.properties format."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_GZIP_ENABLED,
+		        "false",
+		        "Set to 'true' to turn on OpenMRS's gzip filter, and have the webapp compress data before sending it to any client that supports it. Generally use this if you are running Tomcat standalone. If you are running Tomcat behind Apache, then you'd want to use Apache to do gzip compression.",
+		        BooleanDatatype.class, null));
+		props.add(new GlobalProperty(GLOBAL_PROPERTY_REPORT_XML_MACROS, "",
+		        "Macros that will be applied to Report Schema XMLs when they are interpreted. This should be java.util.properties format."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_MEDICAL_RECORD_OBSERVATIONS,
-		                "1238",
-		                "The concept id of the MEDICAL_RECORD_OBSERVATIONS concept.  This concept_id is presumed to be the generic grouping (obr) concept in hl7 messages.  An obs_group row is not created for this concept."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_MEDICAL_RECORD_OBSERVATIONS,
+		        "1238",
+		        "The concept id of the MEDICAL_RECORD_OBSERVATIONS concept.  This concept_id is presumed to be the generic grouping (obr) concept in hl7 messages.  An obs_group row is not created for this concept."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PROBLEM_LIST,
-		                "1284",
-		                "The concept id of the PROBLEM LIST concept.  This concept_id is presumed to be the generic grouping (obr) concept in hl7 messages.  An obs_group row is not created for this concept."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PROBLEM_LIST,
+		        "1284",
+		        "The concept id of the PROBLEM LIST concept.  This concept_id is presumed to be the generic grouping (obr) concept in hl7 messages.  An obs_group row is not created for this concept."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_LOG_LEVEL,
-		                "org.openmrs.api:" + LOG_LEVEL_INFO,
-		                "Logging levels for log4j.xml. Valid format is class:level,class:level. If class not specified, 'org.openmrs.api' presumed. Valid levels are trace, debug, info, warn, error or fatal"));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_LOG_LEVEL,
+		        "org.openmrs.api:" + LOG_LEVEL_INFO,
+		        "Logging levels for log4j.xml. Valid format is class:level,class:level. If class not specified, 'org.openmrs.api' presumed. Valid levels are trace, debug, info, warn, error or fatal"));
 		
 		props.add(new GlobalProperty(GP_LOG_LOCATION, "",
 		        "A directory where the OpenMRS log file appender is stored. The log file name is 'openmrs.log'."));
@@ -1335,44 +1334,39 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty(GP_LOG_LAYOUT, "%p - %C{1}.%M(%L) |%d{ISO8601}| %m%n",
 		        "A log layout pattern which is used by the OpenMRS file appender."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_DEFAULT_PATIENT_IDENTIFIER_VALIDATOR,
-		                LUHN_IDENTIFIER_VALIDATOR,
-		                "This property sets the default patient identifier validator.  The default validator is only used in a handful of (mostly legacy) instances.  For example, it's used to generate the isValidCheckDigit calculated column and to append the string \"(default)\" to the name of the default validator on the editPatientIdentifierType form."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_DEFAULT_PATIENT_IDENTIFIER_VALIDATOR,
+		        LUHN_IDENTIFIER_VALIDATOR,
+		        "This property sets the default patient identifier validator.  The default validator is only used in a handful of (mostly legacy) instances.  For example, it's used to generate the isValidCheckDigit calculated column and to append the string \"(default)\" to the name of the default validator on the editPatientIdentifierType form."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_IDENTIFIER_IMPORTANT_TYPES,
-		                "",
-		                "A comma delimited list of PatientIdentifier names : PatientIdentifier locations that will be displayed on the patient dashboard.  E.g.: TRACnet ID:Rwanda,ELDID:Kenya"));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_IDENTIFIER_IMPORTANT_TYPES,
+		        "",
+		        "A comma delimited list of PatientIdentifier names : PatientIdentifier locations that will be displayed on the patient dashboard.  E.g.: TRACnet ID:Rwanda,ELDID:Kenya"));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_COMPLEX_OBS_DIR, "complex_obs",
 		        "Default directory for storing complex obs."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_ENCOUNTER_FORM_OBS_SORT_ORDER,
-		                "number",
-		                "The sort order for the obs listed on the encounter edit form.  'number' sorts on the associated numbering from the form schema.  'weight' sorts on the order displayed in the form schema."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_ENCOUNTER_FORM_OBS_SORT_ORDER,
+		        "number",
+		        "The sort order for the obs listed on the encounter edit form.  'number' sorts on the associated numbering from the form schema.  'weight' sorts on the order displayed in the form schema."));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, "en, es, fr, it, pt",
 		        "Comma delimited list of locales allowed for use on system"));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_NEWPATIENTFORM_RELATIONSHIPS,
-		                "",
-		                "Comma separated list of the RelationshipTypes to show on the new/short patient form.  The list is defined like '3a, 4b, 7a'.  The number is the RelationshipTypeId and the 'a' vs 'b' part is which side of the relationship is filled in by the user."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_NEWPATIENTFORM_RELATIONSHIPS,
+		        "",
+		        "Comma separated list of the RelationshipTypes to show on the new/short patient form.  The list is defined like '3a, 4b, 7a'.  The number is the RelationshipTypeId and the 'a' vs 'b' part is which side of the relationship is filled in by the user."));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_MIN_SEARCH_CHARACTERS, "3",
 		        "Number of characters user must input before searching is started."));
 		
-		props
-		        .add(new GlobalProperty(
-		                OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE,
-		                OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE,
-		                "Specifies the default locale. You can specify both the language code(ISO-639) and the country code(ISO-3166), e.g. 'en_GB' or just country: e.g. 'en'"));
+		props.add(new GlobalProperty(
+		        OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE,
+		        OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE,
+		        "Specifies the default locale. You can specify both the language code(ISO-639) and the country code(ISO-3166), e.g. 'en_GB' or just country: e.g. 'en'"));
 		
 		props.add(new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_WEEK_START_DAY,
 		        OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_WEEK_START_DAY_DEFAULT_VALUE,
@@ -1393,21 +1387,18 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty(GP_PASSWORD_REQUIRES_NON_DIGIT, "true",
 		        "Configure whether passwords must contain at least one non-digit", BooleanDatatype.class, null));
 		
-		props
-		        .add(new GlobalProperty(GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "true",
-		                "Configure whether passwords must contain both upper and lower case characters",
-		                BooleanDatatype.class, null));
+		props.add(new GlobalProperty(GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "true",
+		        "Configure whether passwords must contain both upper and lower case characters", BooleanDatatype.class, null));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_IGNORE_MISSING_NONLOCAL_PATIENTS, "false",
 		        "If true, hl7 messages for patients that are not found and are non-local will silently be dropped/ignored",
 		        BooleanDatatype.class, null));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_SHOW_PATIENT_NAME,
-		                "false",
-		                "Whether or not to display the patient name in the patient dashboard title. Note that enabling this could be security risk if multiple users operate on the same computer.",
-		                BooleanDatatype.class, null));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_SHOW_PATIENT_NAME,
+		        "false",
+		        "Whether or not to display the patient name in the patient dashboard title. Note that enabling this could be security risk if multiple users operate on the same computer.",
+		        BooleanDatatype.class, null));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_DEFAULT_THEME, "",
 		        "Default theme for users.  OpenMRS ships with themes of 'green', 'orange', 'purple', and 'legacy'"));
@@ -1421,26 +1412,23 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty(GP_SEARCH_WIDGET_BATCH_SIZE, "200",
 		        "The maximum number of search results that are returned by an ajax call"));
 		
-		props
-		        .add(new GlobalProperty(
-		                GP_SEARCH_WIDGET_IN_SERIAL_MODE,
-		                "false",
-		                "Specifies whether the search widgets should make ajax requests in serial or parallel order, a value of true is appropriate for implementations running on a slow network connection and vice versa",
-		                BooleanDatatype.class, null));
+		props.add(new GlobalProperty(
+		        GP_SEARCH_WIDGET_IN_SERIAL_MODE,
+		        "false",
+		        "Specifies whether the search widgets should make ajax requests in serial or parallel order, a value of true is appropriate for implementations running on a slow network connection and vice versa",
+		        BooleanDatatype.class, null));
 		
-		props
-		        .add(new GlobalProperty(
-		                GP_SEARCH_WIDGET_DELAY_INTERVAL,
-		                "400",
-		                "Specifies time interval in milliseconds when searching, between keyboard keyup event and triggering the search off, should be higher if most users are slow when typing so as to minimise the load on the server"));
+		props.add(new GlobalProperty(
+		        GP_SEARCH_WIDGET_DELAY_INTERVAL,
+		        "400",
+		        "Specifies time interval in milliseconds when searching, between keyboard keyup event and triggering the search off, should be higher if most users are slow when typing so as to minimise the load on the server"));
 		
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME, "Unknown Location",
 		        "The name of the location to use as a system default"));
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
-		                "START",
-		                "Specifies how patient names are matched while searching patient. Valid values are 'ANYWHERE' or 'START'. Defaults to start if missing or invalid value is present."));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
+		        "START",
+		        "Specifies how patient names are matched while searching patient. Valid values are 'ANYWHERE' or 'START'. Defaults to start if missing or invalid value is present."));
 		
 		props.add(new GlobalProperty(GP_ORDER_ENTRY_ORDER_NUMBER_PREFIX, ORDER_NUMBER_DEFAULT_PREFIX,
 		        "Specifies the prefix used when creating order numbers"));
@@ -1448,12 +1436,11 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty(GP_ENABLE_CONCEPT_MAP_TYPE_MANAGEMENT, "false",
 		        "Enables or disables management of concept map types", BooleanDatatype.class, null));
 		
-		props
-		        .add(new GlobalProperty(
-		                GLOBAL_PROPERTY_ENABLE_VISITS,
-		                "true",
-		                "Set to true to enable the Visits feature. This will replace the 'Encounters' tab with a 'Visits' tab on the dashboard.",
-		                BooleanDatatype.class, null));
+		props.add(new GlobalProperty(
+		        GLOBAL_PROPERTY_ENABLE_VISITS,
+		        "true",
+		        "Set to true to enable the Visits feature. This will replace the 'Encounters' tab with a 'Visits' tab on the dashboard.",
+		        BooleanDatatype.class, null));
 		
 		props.add(new GlobalProperty(GP_VISIT_ASSIGNMENT_HANDLER, ExistingVisitAssignmentHandler.class.getName(),
 		        "Set to the name of the class responsible for assigning encounters to visits."));
@@ -1461,26 +1448,23 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty(GLOBAL_PROPERTY_APPLICATION_NAME, "OpenMRS",
 		        "The name of this application, as presented to the user, for example on the login and welcome pages."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING,
-		                "",
-		                "Specifies how encounter types are mapped to visit types when automatically assigning encounters to visits. e.g 1:1, 2:1, 3:2 in the format encounterTypeId:visitTypeId or encounterTypeUuid:visitTypeUuid or a combination of encounter/visit type uuids and ids e.g 1:759799ab-c9a5-435e-b671-77773ada74e4"));
+		props.add(new GlobalProperty(
+		        GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING,
+		        "",
+		        "Specifies how encounter types are mapped to visit types when automatically assigning encounters to visits. e.g 1:1, 2:1, 3:2 in the format encounterTypeId:visitTypeId or encounterTypeUuid:visitTypeUuid or a combination of encounter/visit type uuids and ids e.g 1:759799ab-c9a5-435e-b671-77773ada74e4"));
 		
-		props
-		        .add(new GlobalProperty(
-		                GP_DASHBOARD_PROVIDER_DISPLAY_ENCOUNTER_ROLES,
-		                "",
-		                "A comma-separated list of encounter roles (by name or id). Providers with these roles in an encounter will be displayed on the encounter tab of the patient dashboard."));
+		props.add(new GlobalProperty(
+		        GP_DASHBOARD_PROVIDER_DISPLAY_ENCOUNTER_ROLES,
+		        "",
+		        "A comma-separated list of encounter roles (by name or id). Providers with these roles in an encounter will be displayed on the encounter tab of the patient dashboard."));
 		
 		props.add(new GlobalProperty(GP_SEARCH_WIDGET_MAXIMUM_RESULTS, "2000",
 		        "Specifies the maximum number of results to return from a single search in the search widgets"));
 		
-		props
-		        .add(new GlobalProperty(
-		                GP_DASHBOARD_MAX_NUMBER_OF_ENCOUNTERS_TO_SHOW,
-		                "",
-		                "An integer which, if specified, would determine the maximum number of encounters to display on the encounter tab of the patient dashboard."));
+		props.add(new GlobalProperty(
+		        GP_DASHBOARD_MAX_NUMBER_OF_ENCOUNTERS_TO_SHOW,
+		        "",
+		        "An integer which, if specified, would determine the maximum number of encounters to display on the encounter tab of the patient dashboard."));
 		
 		props.add(new GlobalProperty(GP_VISIT_TYPES_TO_AUTO_CLOSE, "",
 		        "comma-separated list of the visit type(s) to automatically close"));
@@ -1491,24 +1475,20 @@ public final class OpenmrsConstants {
 		props.add(new GlobalProperty(GP_DEFAULT_CONCEPT_MAP_TYPE, "NARROWER-THAN",
 		        "Default concept map type which is used when no other is set"));
 		
-		props
-		        .add(new GlobalProperty(GP_CONCEPT_DRUG_DOSAGE_FORM_CONCEPT_CLASSES, "",
-		                "A comma-separated list of the allowed concept classes for the dosage form field of the concept drug management form."));
+		props.add(new GlobalProperty(GP_CONCEPT_DRUG_DOSAGE_FORM_CONCEPT_CLASSES, "",
+		        "A comma-separated list of the allowed concept classes for the dosage form field of the concept drug management form."));
 		
-		props
-		        .add(new GlobalProperty(GP_CONCEPT_DRUG_ROUTE_CONCEPT_CLASSES, "",
-		                "A comma-separated list of the allowed concept classes for the route field of the concept drug management form."));
+		props.add(new GlobalProperty(GP_CONCEPT_DRUG_ROUTE_CONCEPT_CLASSES, "",
+		        "A comma-separated list of the allowed concept classes for the route field of the concept drug management form."));
 		
-		props
-		        .add(new GlobalProperty(
-		                GP_CASE_SENSITIVE_NAMES_IN_CONCEPT_NAME_TABLE,
-		                "true",
-		                "Indicates whether names in the concept_name table are case sensitive or not. Setting this to false for MySQL with a case insensitive collation improves search performance."));
-		props
-		        .add(new GlobalProperty(
-		                GP_DASHBOARD_METADATA_CASE_CONVERSION,
-		                "",
-		                "Indicates which type automatic case conversion is applied to program/workflow/state in the patient dashboard. Valid values: lowercase, uppercase, capitalize. If empty no conversion is applied."));
+		props.add(new GlobalProperty(
+		        GP_CASE_SENSITIVE_NAMES_IN_CONCEPT_NAME_TABLE,
+		        "true",
+		        "Indicates whether names in the concept_name table are case sensitive or not. Setting this to false for MySQL with a case insensitive collation improves search performance."));
+		props.add(new GlobalProperty(
+		        GP_DASHBOARD_METADATA_CASE_CONVERSION,
+		        "",
+		        "Indicates which type automatic case conversion is applied to program/workflow/state in the patient dashboard. Valid values: lowercase, uppercase, capitalize. If empty no conversion is applied."));
 		
 		props.add(new GlobalProperty(GP_ALLERGY_ALLERGEN_CONCEPT_CLASSES, "Drug,MedSet",
 		        "A comma-separated list of the allowed concept classes for the allergen field of the allergy dialog"));
@@ -1729,8 +1709,8 @@ public final class OpenmrsConstants {
 	public static final String GP_LOG_LAYOUT = "log.layout";
 	
 	/**
-	 * It specifies a default name of the OpenMRS file appender.
-	 * .
+	 * It specifies a default name of the OpenMRS file appender. .
+	 * 
 	 * @since 1.9.2
 	 */
 	public static final String LOG_OPENMRS_FILE_APPENDER = "OPENMRS FILE APPENDER";
@@ -1775,6 +1755,6 @@ public final class OpenmrsConstants {
 	/** The data type to return on failing to load a custom data type. */
 	public static final String DEFAULT_CUSTOM_DATATYPE = FreeTextDatatype.class.getName();
 	
-	/**Prefix followed by registered component name.*/
+	/** Prefix followed by registered component name. */
 	public static final String REGISTERED_COMPONENT_NAME_PREFIX = "bean:";
 }

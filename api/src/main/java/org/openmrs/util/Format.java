@@ -17,16 +17,28 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Vector;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.GlobalProperty;
+import org.openmrs.api.GlobalPropertyListener;
 import org.openmrs.api.context.Context;
+import org.openmrs.order.RegimenSuggestion;
 
-public class Format {
+public class Format implements GlobalPropertyListener {
 	
 	private static Log log = LogFactory.getLog(Format.class);
+	
+	private static String defaultDateTimeCache = null;
+	
+	private static String defaultDateCache = null;
+	
+	private static String defaultTimeCache = null;
 	
 	public enum FORMAT_TYPE {
 		DATE, TIME, TIMESTAMP
@@ -69,14 +81,29 @@ public class Format {
 		
 		DateFormat dateFormat = null;
 		
-		if (type == FORMAT_TYPE.TIMESTAMP)
-			dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		else if (type == FORMAT_TYPE.TIME)
-			dateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM, locale);
-		else {
-			//if (type == FORMAT_TYPE.DATE) (default)
-			dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, locale);
+		if (type == FORMAT_TYPE.TIMESTAMP) {
+			String dateTimeFormat = Context.getAdministrationService().getGlobalPropertyValue(
+			    OpenmrsConstants.GLOBAL_PROPERTY_DATEANDTIME_DISPLAY_FORMAT, null);
+			if (StringUtils.isEmpty(dateTimeFormat))
+				dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+			else
+				dateFormat = new OpenmrsDateFormat(new SimpleDateFormat(dateTimeFormat), locale);
+		} else if (type == FORMAT_TYPE.TIME) {
+			String timeFormat = Context.getAdministrationService().getGlobalPropertyValue(
+			    OpenmrsConstants.GLOBAL_PROPERTY_TIME_DISPLAY_FORMAT, null);
+			if (StringUtils.isEmpty(timeFormat))
+				dateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM, locale);
+			else
+				dateFormat = new OpenmrsDateFormat(new SimpleDateFormat(timeFormat), locale);
+		} else if (type == FORMAT_TYPE.DATE) {
+			String formatValue = Context.getAdministrationService().getGlobalPropertyValue(
+			    OpenmrsConstants.GLOBAL_POPERTY_DATE_DISPLAY_FORMAT, "");
+			if (StringUtils.isEmpty(formatValue))
+				dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, locale);
+			else
+				dateFormat = new OpenmrsDateFormat(new SimpleDateFormat(formatValue), locale);
 		}
+		
 		return date == null ? "" : dateFormat.format(date);
 	}
 	
@@ -85,6 +112,28 @@ public class Format {
 		PrintWriter pw = new PrintWriter(sw);
 		t.printStackTrace(pw);
 		return t + "\n" + sw.toString();
+	}
+	
+	@Override
+	public boolean supportsPropertyName(String propertyName) {
+		return OpenmrsConstants.GLOBAL_PROPERTY_DATEANDTIME_DISPLAY_FORMAT.equals(propertyName)
+		        || OpenmrsConstants.GLOBAL_POPERTY_DATE_DISPLAY_FORMAT.equals(propertyName)
+		        || OpenmrsConstants.GLOBAL_PROPERTY_TIME_DISPLAY_FORMAT.equals(propertyName);
+	}
+	
+	@Override
+	public void globalPropertyChanged(GlobalProperty newValue) {
+		// reset the value
+		defaultDateTimeCache = null;
+		defaultDateCache = null;
+		defaultTimeCache = null;
+	}
+	
+	@Override
+	public void globalPropertyDeleted(String propertyName) {
+		defaultDateTimeCache = null;
+		defaultDateCache = null;
+		defaultTimeCache = null;
 	}
 	
 }
