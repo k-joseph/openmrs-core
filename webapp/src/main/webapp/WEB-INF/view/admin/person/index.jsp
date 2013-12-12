@@ -34,6 +34,11 @@
 	function doPersonSearch(text, resultHandler, getMatchCount, opts) {
 		DWRPersonService.findCountAndPeople(text, true, "", opts.start, opts.length, false, resultHandler);
 	}
+	
+	//includes voided persons in the searh widget results
+	function includeVoidedPersons() {
+		DWRPersonService.findPeople(searchPhrase, true);
+	}
 </script>
 
 <h2><openmrs:message code="Person.title"/></h2>
@@ -43,7 +48,11 @@
 <div>
 	<b class="boxHeader"><openmrs:message code="Person.find"/></b>
 	<div class="box">
-		<div class="searchWidgetContainer" id="findPersons"></div>
+		<div class="searchWidgetContainer" id="findPersons">
+			<div class="includeVoidedPersons">
+				<input type="checkbox" name="filter" onclick="includeVoidedPersons()"/>Include Voided
+			</div>
+		</div>
 	</div>
 </div>
 
